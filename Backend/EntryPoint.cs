@@ -7,15 +7,16 @@ using Sharp7;
 
 namespace SPSCtrl
 {
-    static class Program
+    static class EntryPoint
     {
-        /// Der Haupteinstiegspunkt für die Anwendung.
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainGUI());
+            Application.Exit();
+
         }
         
     }
