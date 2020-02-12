@@ -17,7 +17,7 @@ namespace SPSCtrl
     public class SPSBackend
     {
         public const int buffersize = 128; //Buffergröße in Bytes (Muss mit der Größe des Blocks übereinstimmen, der ausgelesen wird)
-        public const int livebuffersize = 56;
+        public const int livebuffersize = 59;
         public const int byteoffset = 126; //Offset zwischen einzelnen Einträgen (X: 0-61, Y: 62-123, Einträge: 124-126
 
         private static S7Client SPS;
@@ -38,6 +38,7 @@ namespace SPSCtrl
         public short hersteller;
         public short pallette;
         public bool unNummer;
+		public bool rastbar;
         public short schildGroesse_Links, schildGroesse_Rechts; // Vorderseite, Hinterseite
         public short state;
 
@@ -145,7 +146,9 @@ namespace SPSCtrl
             pallette = BitConverter.ToInt16(livebuffer, 48);
             unNummer = BitConverter.ToBoolean(livebuffer, 51);
             schildGroesse_Links = (short)livebuffer[52];
-            schildGroesse_Rechts = (short)livebuffer[55];
+            schildGroesse_Rechts = (short)livebuffer[54];
+			rastbar = BitConverter.ToBoolean(livebuffer, 58);
+
         }
 
         public bool IsConnected => isConnected;

@@ -116,16 +116,26 @@ namespace SPSCtrl
                 schild = "L";
             else if (this.productlist.SelectedItem.ToString().ToLower().Contains("_xl"))
                 schild = "XL";
-            else if (this.productlist.SelectedItem.ToString().ToLower().Contains("_R"))
-                schild = "S (Hinten)";
             else
                 schild = "Fehler";
 
-            this.schild_manual_label.Text = "Schildgröße: " + schild;
+			if (this.productlist.SelectedItem.ToString().ToLower().Contains("_r_"))
+				schild = "S (Hinten)";
 
+			this.schild_manual_label.Text = "Schildgröße: " + schild;
+
+			//Wenn "_UN" im Eintrag, setze UN Flag.
             this.un_manual_label.Text = (this.productlist.SelectedItem.ToString().ToLower().Contains("_un"))? "UN: JA" : "UN: NEIN";
 
-            this.product_label.Text = productlist.SelectedItem.ToString();
+			//Wenn "_R_" im Eintrag setze Spezialfall (Schütz,S,Hinten), wenn "_R" im Eintrag, setze Rastbar Flag.
+
+			this.rastbar_manual_label.Text = (this.productlist.SelectedItem.ToString().ToLower().EndsWith("_r")) ? "Rastbar: JA" : "Rastbar: NEIN";
+
+
+
+
+			//Zeige gewählten Eintrag unter der Liste (zur besseren Sichtbarkeit).
+			this.product_label.Text = productlist.SelectedItem.ToString();
 
             Init_XYLists();
             comment.Text = LoadComment(productlist.SelectedIndex);
@@ -155,6 +165,7 @@ namespace SPSCtrl
                 string schild;
                 string un = "";
                 string schuetz_R;
+				string rastbar = "";
                 short schildGroesse;
 
                 switch (SPSController.hersteller)
@@ -170,8 +181,8 @@ namespace SPSCtrl
 
                 //Auswahl Vorder/Hinter-Schild
                 schildGroesse = CheckBack()? SPSController.schildGroesse_Rechts : SPSController.schildGroesse_Links;
-                //Spezialfall Schutz Hinten, Schild R
-                schuetz_R = (hersteller == "schutz" && back && schildGroesse == 2) ? "r" : "";
+                //Spezialfall Schutz Hinten, Schild S
+                schuetz_R = (hersteller == "schutz" && back && schildGroesse == 2) ? "_r_" : "";
 
                 switch (schildGroesse)
                 {
@@ -188,10 +199,15 @@ namespace SPSCtrl
                     un = "_un";
                 }
 
+				if (SPSController.rastbar)
+				{
+					rastbar = "_r";
+				}
+
                 for (int i = 0; i < products.Count; i++)
                 {
                     string listEntry = productlist.Items[i].ToString().ToLower();
-                    if (listEntry.Contains(hersteller) && listEntry.Contains(pallette) && listEntry.Contains(schild) && listEntry.Contains(un) && listEntry.Contains(schuetz_R))
+                    if (listEntry.Contains(hersteller) && listEntry.Contains(pallette) && listEntry.Contains(schild) && listEntry.Contains(schuetz_R) && listEntry.Contains(un) && listEntry.EndsWith(rastbar))
                     {
                         inList = true;
                         index = i;

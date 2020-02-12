@@ -89,7 +89,9 @@ namespace SPSCtrl
         private TextBox comment;
         private Label product_label;
         private Label auswahl_label;
-    }
+		private Label rastbar_label;
+		private Label rastbar_manual_label;
+	}
 
     
 

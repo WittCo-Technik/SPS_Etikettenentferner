@@ -235,7 +235,17 @@ namespace SPSCtrl
                     this.un_label.Text += "NEIN";
                 }
 
-                this.schildsizeFront_label.Text = "Schildgröße Vorne: ";
+				this.rastbar_label.Text = "Rastbar:";
+				if (SPSController.rastbar)
+				{
+					this.rastbar_label.Text += "JA";
+				}
+				else
+				{
+					this.rastbar_label.Text += "NEIN";
+				}
+
+				this.schildsizeFront_label.Text = "Schildgröße Vorne: ";
                 switch (SPSController.schildGroesse_Links)
                 {
                     case 1: this.schildsizeFront_label.Text += "XS"; break;
