@@ -28,76 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.accept = new System.Windows.Forms.Button();
-            this.abort = new System.Windows.Forms.Button();
-            this.backuplist = new System.Windows.Forms.ListView();
-            this.backupcolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SuspendLayout();
-            // 
-            // accept
-            // 
-            this.accept.Enabled = false;
-            this.accept.Location = new System.Drawing.Point(41, 254);
-            this.accept.Name = "accept";
-            this.accept.Size = new System.Drawing.Size(86, 45);
-            this.accept.TabIndex = 0;
-            this.accept.Text = "BACKUP EINSPIELEN";
-            this.accept.UseVisualStyleBackColor = true;
-            this.accept.Click += new System.EventHandler(this.Accept_Click);
-            // 
-            // abort
-            // 
-            this.abort.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.abort.Location = new System.Drawing.Point(347, 254);
-            this.abort.Name = "abort";
-            this.abort.Size = new System.Drawing.Size(75, 45);
-            this.abort.TabIndex = 1;
-            this.abort.Text = "Abbrechen";
-            this.abort.UseVisualStyleBackColor = true;
-            this.abort.Click += new System.EventHandler(this.abort_Click);
-            // 
-            // backuplist
-            // 
-            this.backuplist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.accept = new System.Windows.Forms.Button();
+			this.abort = new System.Windows.Forms.Button();
+			this.backuplist = new System.Windows.Forms.ListView();
+			this.backupcolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.SuspendLayout();
+			// 
+			// accept
+			// 
+			this.accept.Enabled = false;
+			this.accept.Location = new System.Drawing.Point(41, 254);
+			this.accept.Name = "accept";
+			this.accept.Size = new System.Drawing.Size(86, 45);
+			this.accept.TabIndex = 0;
+			this.accept.Text = "BACKUP EINSPIELEN";
+			this.accept.UseVisualStyleBackColor = true;
+			this.accept.Click += new System.EventHandler(this.Accept_Click);
+			// 
+			// abort
+			// 
+			this.abort.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.abort.Location = new System.Drawing.Point(322, 254);
+			this.abort.Name = "abort";
+			this.abort.Size = new System.Drawing.Size(75, 45);
+			this.abort.TabIndex = 1;
+			this.abort.Text = "Abbrechen";
+			this.abort.UseVisualStyleBackColor = true;
+			this.abort.Click += new System.EventHandler(this.abort_Click);
+			// 
+			// backuplist
+			// 
+			this.backuplist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.backupcolumn,
             this.date});
-            this.backuplist.HideSelection = false;
-            this.backuplist.Location = new System.Drawing.Point(12, 12);
-            this.backuplist.MultiSelect = false;
-            this.backuplist.Name = "backuplist";
-            this.backuplist.Size = new System.Drawing.Size(439, 231);
-            this.backuplist.TabIndex = 2;
-            this.backuplist.UseCompatibleStateImageBehavior = false;
-            this.backuplist.View = System.Windows.Forms.View.Details;
-            this.backuplist.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
-            // 
-            // backupcolumn
-            // 
-            this.backupcolumn.Text = "Backup-Datei";
-            this.backupcolumn.Width = 251;
-            // 
-            // date
-            // 
-            this.date.Text = "Erstelldatum";
-            this.date.Width = 185;
-            // 
-            // BackupRestoreGUI
-            // 
-            this.AcceptButton = this.accept;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.abort;
-            this.ClientSize = new System.Drawing.Size(463, 311);
-            this.ControlBox = false;
-            this.Controls.Add(this.backuplist);
-            this.Controls.Add(this.abort);
-            this.Controls.Add(this.accept);
-            this.Name = "BackupRestoreGUI";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Backup einspielen";
-            this.TopMost = true;
-            this.ResumeLayout(false);
+			this.backuplist.HideSelection = false;
+			this.backuplist.Location = new System.Drawing.Point(12, 12);
+			this.backuplist.MultiSelect = false;
+			this.backuplist.Name = "backuplist";
+			this.backuplist.Size = new System.Drawing.Size(439, 231);
+			this.backuplist.TabIndex = 2;
+			this.backuplist.UseCompatibleStateImageBehavior = false;
+			this.backuplist.View = System.Windows.Forms.View.Details;
+			this.backuplist.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
+			// 
+			// backupcolumn
+			// 
+			this.backupcolumn.Text = "Backup-Datei";
+			this.backupcolumn.Width = 251;
+			// 
+			// date
+			// 
+			this.date.Text = "Erstelldatum";
+			this.date.Width = 185;
+			// 
+			// BackupRestoreGUI
+			// 
+			this.AcceptButton = this.accept;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.abort;
+			this.ClientSize = new System.Drawing.Size(463, 311);
+			this.ControlBox = false;
+			this.Controls.Add(this.backuplist);
+			this.Controls.Add(this.abort);
+			this.Controls.Add(this.accept);
+			this.Name = "BackupRestoreGUI";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Backup einspielen";
+			this.TopMost = true;
+			this.ResumeLayout(false);
 
         }
 
