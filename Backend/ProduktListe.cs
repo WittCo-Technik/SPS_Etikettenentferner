@@ -131,9 +131,6 @@ namespace SPSCtrl
 
 			this.rastbar_manual_label.Text = (this.productlist.SelectedItem.ToString().ToLower().EndsWith("_r")) ? "Rastbar: JA" : "Rastbar: NEIN";
 
-
-
-
 			//Zeige gewählten Eintrag unter der Liste (zur besseren Sichtbarkeit).
 			this.product_label.Text = productlist.SelectedItem.ToString();
 
@@ -182,7 +179,7 @@ namespace SPSCtrl
                 //Auswahl Vorder/Hinter-Schild
                 schildGroesse = CheckBack()? SPSController.schildGroesse_Rechts : SPSController.schildGroesse_Links;
                 //Spezialfall Schutz Hinten, Schild S
-                schuetz_R = (hersteller == "schutz" && back && schildGroesse == 2) ? "_r_" : "";
+                schuetz_R = (hersteller == "schutz" && back && schildGroesse == 2) ? "_r_" : "_";
 
                 switch (schildGroesse)
                 {
@@ -190,7 +187,7 @@ namespace SPSCtrl
                     case 2: schild = "_s"; break;
                     case 3: schild = "_l"; break;
                     case 4: schild = "_xl"; break;
-                    case 5: schild = "Kein Schild"; break;
+                    case 5: schild = "_Leer"; break;
                     default: schild = ""; break;
                 }
 
@@ -199,22 +196,25 @@ namespace SPSCtrl
                     un = "_un";
                 }
 
-				if (SPSController.rastbar)
+				if (SPSController.rastbar && pallette == "1")
 				{
 					rastbar = "_r";
 				}
 
+				//String nach dem in der Liste gesucht wird.
+				string searchEntry = hersteller + schild + un + schuetz_R + pallette + rastbar;
+				SendToConsole("Suche:" + searchEntry.ToUpper() + "\n");
                 for (int i = 0; i < products.Count; i++)
                 {
-                    string listEntry = productlist.Items[i].ToString().ToLower();
-                    if (listEntry.Contains(hersteller) && listEntry.Contains(pallette) && listEntry.Contains(schild) && listEntry.Contains(schuetz_R) && listEntry.Contains(un) && listEntry.EndsWith(rastbar))
+                    if (productlist.Items[i].ToString().ToLower() == searchEntry)
                     {
                         inList = true;
                         index = i;
-                        break; //Bricht Schleife beim ersten Fund ab, damit Einträge mit UN nicht ausgewählt werden wenn keine UN Nummer
+                        break; //Bricht Schleife beim ersten Fund mit Übereinstimmung ab
                     }
                 }
 
+				//Wenn passender Eintrag in Liste gefunden, setze Fokus auf entsprechenden Eintrag.
                 if (inList)
                 {
                     productlist.SetSelected(index, true);

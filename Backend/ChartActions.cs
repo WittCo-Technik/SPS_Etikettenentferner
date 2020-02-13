@@ -269,13 +269,13 @@ namespace SPSCtrl
 
                 switch (SPSController.state)
                 {
-                    case 0: this.status.Text = "Status: BEREIT"; break;
-                    case 1: this.status.Text = "Status: Fahrt in Nullposition Hinten"; break;
-                    case 2: this.status.Text = "Status: Reinigung Hinten"; break;
-                    case 3: this.status.Text = "Status: Fahrt in Nullposition Vorne"; break;
-                    case 4: this.status.Text = "Status: Reinigung Vorne"; break;
-                    case 5: this.status.Text = "Status: FERTIG"; break;
-                    default: this.status.Text = "Status: Unbekannt"; break;
+                    case 0: this.status.Text = "Status:\nBEREIT"; break;
+                    case 1: this.status.Text = "Status:\nFahrt in Nullposition Hinten"; break;
+                    case 2: this.status.Text = "Status:\nReinigung Hinten"; break;
+                    case 3: this.status.Text = "Status:\nFahrt in Nullposition Vorne"; break;
+                    case 4: this.status.Text = "Status:\nReinigung Vorne"; break;
+                    case 5: this.status.Text = "Status:\nFERTIG"; break;
+                    default: this.status.Text = "Status:\nUnbekannt"; break;
                 }
 
                 last_hersteller = SPSController.hersteller;
